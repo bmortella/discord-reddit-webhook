@@ -17,7 +17,7 @@ def main():
         process_submission(submission)
     
 def process_submission(submission):
-    webhook = DiscordWebhook(url=os.environ['WEBHOOK_URL'], username=f'reddit • r/{submission.subreddit.display_name}', rate_limit_retry=False)
+    webhook = DiscordWebhook(url=os.environ['WEBHOOK_URL'], username=f'reddit • r/{submission.subreddit.display_name}', rate_limit_retry=True)
     embed = DiscordEmbed(title=f'New {"self" if submission.is_self else "link"} post')
     embed.set_author(name=submission.author.name)
     embed.set_url(f'https://redd.it/{submission.id}')
